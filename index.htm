@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Athiraiyan Kugaseelan — Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --bg: #080b10;
+                --surface: #0d1117;
+                --border: #1e2633;
+                --accent: #00e5ff;
+                --accent2: #7b61ff;
+                --dim: #4a5568;
+                --muted: #8892a4;
+                --text: #cdd6e0;
+                --bright: #f0f4f8;
+                --mono: "JetBrains Mono", monospace;
+                --sans: "Syne", sans-serif;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--mono);
+                font-size: 14px;
+                line-height: 1.7;
+                overflow-x: hidden;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.07) 2px,
+                    rgba(0, 0, 0, 0.07) 4px
+                );
+                pointer-events: none;
+                z-index: 999;
+            }
+
+            body::after {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image:
+                    linear-gradient(
+                        rgba(0, 229, 255, 0.025) 1px,
+                        transparent 1px
+                    ),
+                    linear-gradient(
+                        90deg,
+                        rgba(0, 229, 255, 0.025) 1px,
+                        transparent 1px
+                    );
+                background-size: 40px 40px;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .shell {
+                position: relative;
+                z-index: 1;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 24px 80px;
+            }
+
+            /* ── Nav ── */
+            nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 24px;
+                background: rgba(8, 11, 16, 0.88);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .nav-sig {
+                font-family: var(--sans);
+                font-weight: 800;
+                font-size: 15px;
+                color: var(--accent);
+                letter-spacing: 0.02em;
+            }
+
+            /* ── Language switcher ── */
+            .lang-switcher {
+                display: flex;
+                align-items: center;
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .lang-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-family: var(--mono);
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                padding: 5px 11px;
+                color: var(--dim);
+                transition:
+                    color 0.2s,
+                    background 0.2s;
+            }
+
+            .lang-btn.active {
+                background: var(--accent);
+                color: var(--bg);
+            }
+            .lang-btn:not(.active):hover {
+                color: var(--accent);
+            }
+
+            .lang-divider {
+                width: 1px;
+                height: 18px;
+                background: var(--border);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 24px;
+            }
+
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                transition: color 0.2s;
+            }
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+
+            /* ── Hero ── */
+            .hero {
+                padding: 90px 0 60px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .hero-label {
+                font-size: 11px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .hero-label::before {
+                content: "";
+                display: inline-block;
+                width: 24px;
+                height: 1px;
+                background: var(--accent);
+            }
+
+            h1 {
+                font-family: var(--sans);
+                font-size: clamp(42px, 8vw, 76px);
+                font-weight: 800;
+                line-height: 1;
+                color: var(--bright);
+                letter-spacing: -0.02em;
+                margin-bottom: 8px;
+            }
+
+            .hero-role {
+                font-size: 13px;
+                color: var(--muted);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 28px;
+            }
+            .hero-role .accent {
+                color: var(--accent2);
+            }
+
+            .hero-bio {
+                max-width: 560px;
+                color: var(--muted);
+                line-height: 1.8;
+                margin-bottom: 36px;
+            }
+
+            .hero-links {
+                display: flex;
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 9px 20px;
+                font-family: var(--mono);
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                border-radius: 2px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+            .btn-primary {
+                background: var(--accent);
+                color: var(--bg);
+                border: 1px solid var(--accent);
+            }
+            .btn-primary:hover {
+                background: transparent;
+                color: var(--accent);
+            }
+            .btn-ghost {
+                background: transparent;
+                color: var(--muted);
+                border: 1px solid var(--border);
+            }
+            .btn-ghost:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+
+            /* ── Stats ── */
+            .stats {
+                display: flex;
+                gap: 40px;
+                padding: 32px 0;
+                border-bottom: 1px solid var(--border);
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .stat-num {
+                font-family: var(--sans);
+                font-size: 28px;
+                font-weight: 800;
+                color: var(--bright);
+            }
+            .stat-num span {
+                color: var(--accent);
+            }
+            .stat-label {
+                font-size: 11px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--dim);
+            }
+
+            /* ── Sections ── */
+            section {
+                padding: 64px 0;
+                border-bottom: 1px solid var(--border);
+            }
+            section:last-child {
+                border-bottom: none;
+            }
+
+            .section-header {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 40px;
+            }
+
+            .section-tag {
+                font-size: 10px;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--accent);
+                background: rgba(0, 229, 255, 0.06);
+                border: 1px solid rgba(0, 229, 255, 0.2);
+                padding: 3px 10px;
+                border-radius: 2px;
+            }
+
+            h2 {
+                font-family: var(--sans);
+                font-size: 26px;
+                font-weight: 800;
+                color: var(--bright);
+                letter-spacing: -0.01em;
+            }
+
+            /* ── Timeline ── */
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .job {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-left: 2px solid var(--border);
+                padding: 24px 28px;
+                transition: border-color 0.2s;
+                cursor: default;
+            }
+            .job:hover {
+                border-color: var(--accent);
+                border-left-color: var(--accent);
+            }
+            .job:hover .job-title {
+                color: var(--accent);
+            }
+
+            .job-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 6px;
+            }
+            .job-title {
+                font-family: var(--sans);
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--bright);
+                transition: color 0.2s;
+            }
+            .job-period {
+                font-size: 11px;
+                color: var(--dim);
+                letter-spacing: 0.06em;
+                white-space: nowrap;
+                padding-top: 3px;
+            }
+            .job-company {
+                font-size: 12px;
+                color: var(--accent2);
+                letter-spacing: 0.06em;
+                margin-bottom: 12px;
+            }
+            .job-desc {
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.75;
+            }
+            .job-tags {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-top: 16px;
+            }
+
+            .tag {
+                font-size: 10px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--dim);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid var(--border);
+                padding: 3px 8px;
+                border-radius: 2px;
+            }
+
+            /* ── Projects ── */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 16px;
+            }
+
+            .project-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                padding: 24px;
+                border-radius: 2px;
+                transition:
+                    border-color 0.25s,
+                    transform 0.25s;
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .project-card:hover {
+                border-color: var(--accent);
+                transform: translateY(-3px);
+            }
+
+            .project-card-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .proj-icon {
+                font-size: 18px;
+            }
+            .proj-link-icon {
+                color: var(--dim);
+                font-size: 14px;
+                transition: color 0.2s;
+            }
+            .project-card:hover .proj-link-icon {
+                color: var(--accent);
+            }
+            .project-name {
+                font-family: var(--sans);
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--bright);
+            }
+            .project-desc {
+                font-size: 12px;
+                color: var(--muted);
+                line-height: 1.7;
+            }
+            .project-tags {
+                display: flex;
+                gap: 6px;
+                flex-wrap: wrap;
+                margin-top: 4px;
+            }
+
+            /* ── Skills ── */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 24px;
+            }
+            .skill-group-title {
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 14px;
+            }
+            .skill-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .skill-item {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .skill-name {
+                display: flex;
+                justify-content: space-between;
+                font-size: 12px;
+                color: var(--text);
+            }
+            .skill-pct {
+                color: var(--dim);
+            }
+            .skill-bar {
+                height: 2px;
+                background: var(--border);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            .skill-fill {
+                height: 100%;
+                border-radius: 2px;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent2),
+                    var(--accent)
+                );
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            /* ── Spoken languages ── */
+            .lang-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 16px;
+            }
+
+            .lang-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                padding: 20px;
+                border-radius: 2px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                transition: border-color 0.2s;
+            }
+            .lang-card:hover {
+                border-color: var(--accent2);
+            }
+            .lang-name-text {
+                font-family: var(--sans);
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--bright);
+            }
+            .lang-level {
+                font-size: 11px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+            .lang-dots {
+                display: flex;
+                gap: 5px;
+                margin-top: 4px;
+            }
+            .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                border: 1px solid var(--dim);
+            }
+            .dot.filled {
+                background: var(--accent2);
+                border-color: var(--accent2);
+            }
+
+            footer {
+                text-align: center;
+                padding: 40px 0 20px;
+                color: var(--dim);
+                font-size: 11px;
+                letter-spacing: 0.1em;
+            }
+            footer a {
+                color: var(--accent);
+                text-decoration: none;
+            }
+
+            /* ── Fade-in ── */
+            .fade-in {
+                opacity: 0;
+                transform: translateY(16px);
+                transition:
+                    opacity 0.6s ease,
+                    transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: none;
+            }
+
+            /* ── Lang swap flash ── */
+            .lang-fading {
+                opacity: 0;
+                transition: opacity 0.12s ease;
+            }
+
+            @media (max-width: 640px) {
+                .nav-links {
+                    display: none;
+                }
+                .stats {
+                    gap: 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-left">
+                <span class="nav-sig">AK.dev</span>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <div class="lang-divider"></div>
+                    <button class="lang-btn" data-lang="de">DE</button>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#experience" data-i18n="nav.experience">Experience</a>
+                <a href="#projects" data-i18n="nav.projects">Projects</a>
+                <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#languages" data-i18n="nav.languages">Languages</a>
+            </div>
+        </nav>
+
+        <div class="shell">
+            <!-- HERO -->
+            <header class="hero fade-in" id="about">
+                <div class="hero-label" data-i18n="hero.available">
+                    Available for opportunities
+                </div>
+                <h1>Athiraiyan<br />Kugaseelan</h1>
+                <p class="hero-role">
+                    <span data-i18n="hero.role">Workplace Engineer</span>
+                    &nbsp;/&nbsp;
+                    <span class="accent" data-i18n="hero.spec"
+                        >Infrastructure &amp; Backend</span
+                    >
+                </p>
+                <p class="hero-bio" data-i18n="hero.bio">
+                    I build reliable, scalable systems — from cloud-native
+                    backend services to self-hosted homelab infrastructure.
+                    Passionate about automation, security, and turning complex
+                    architecture into clean, reproducible code.
+                </p>
+                <div class="hero-links">
+                    <a href="mailto:athiraiyan.kugaseelan@protonmail.com" class="btn btn-primary"
+                        >↗ <span data-i18n="hero.cta">Get in touch</span></a
+                    >
+                    <a
+                        href="https://github.com/akugaseelan"
+                        target="_blank"
+                        class="btn btn-ghost"
+                        >GitHub</a
+                    >
+                    <a
+                        href="https://linkedin.com/in/athiraiyan"
+                        target="_blank"
+                        class="btn btn-ghost"
+                        >LinkedIn</a
+                    >
+                </div>
+            </header>
+
+            <!-- STATS -->
+            <div class="stats fade-in">
+                <div class="stat-item">
+                    <span class="stat-num">10<span>+</span></span>
+                    <span class="stat-label" data-i18n="stats.years"
+                        >Years experience</span
+                    >
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">4</span>
+                    <span class="stat-label" data-i18n="stats.langs"
+                        >Languages spoken</span
+                    >
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">98.4%</span>
+                    <span class="stat-label" data-i18n="stats.uptime"
+                        >Homelab uptime (goal)</span
+                    >
+                </div>
+            </div>
+
+            <!-- EXPERIENCE -->
+            <section id="experience">
+                <div class="section-header fade-in">
+                    <span class="section-tag"
+                        >02 //
+                        <span data-i18n="nav.experience">Experience</span></span
+                    >
+                    <h2 data-i18n="exp.heading">Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j1.title"
+                                >Modern Workplace Engineer</span
+                            >
+                            <span class="job-period"
+                                >02.2025 —
+                                <span
+                                    >10.2025</span
+                                ></span
+                            >
+                        </div>
+                        <div class="job-company">GrabX Solutions AG</div>
+                        <p class="job-desc" data-i18n="exp.j1.desc">
+                            Engineering and deployment of CI/CD based Intune Policies for Workplaces with CIS hardening. Aiding with CIS assessment and recommendations for mitigations on open points.
+                            Design and implementation of M365 DSC to detect configuration drift and notification to a Teams channel.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">PowerShell</span
+                            ><span class="tag">Intune</span
+                            ><span class="tag">CI/CD</span
+                            ><span class="tag">DSC</span
+                            ><span class="tag">PSADT</span>
+                        </div>
+                    </div>
+
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j2.title"
+                                >System Engineer</span
+                            >
+                            <span class="job-period">01.2024 — 01.2025</span>
+                        </div>
+                        <div class="job-company">Dindan Solutions GmbH</div>
+                        <p class="job-desc" data-i18n="exp.j2.desc">
+                            Introduction of NinjaOne RMM for Windows client management and automation. Preperation and planning for Windows 11 upgrade in a school environment.
+                            Development of a Inventory solution in Java with Springboot. Co-Engineer in a Server upgrade project from Windows Server 2016 to Windows Server 2022 with focus on Hyper-V.
+                            Implementation of MFA for a secure remote access to the school network.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">PowerShell</span
+                            ><span class="tag">PSADT</span
+                            ><span class="tag">Conditional Access</span
+                            ><span class="tag">NinjaOne</span
+                            ><span class="tag">Hyper-V</span>
+                        </div>
+                    </div>
+
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j3.title"
+                                >System Engineer</span
+                            >
+                            <span class="job-period">01.2023 — 12.2023</span>
+                        </div>
+                        <div class="job-company">isolutions AG</div>
+                        <p class="job-desc" data-i18n="exp.j3.desc">
+                            Client Engineer in a Windows 11 migration project for an emergency services provider with multiple client types. Packaged applications for deploymen with Intune on Windows and macOS devices.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">Intune</span
+                            ><span class="tag">Github</span
+                            ><span class="tag">macOS management</span
+                            ><span class="tag">PSADT</span>
+                        </div>
+                    </div>
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j4.title"
+                                >SOC Analyst</span
+                            >
+                            <span class="job-period">01.2021 — 04.2022</span>
+                        </div>
+                        <div class="job-company">baseVISION AG</div>
+                        <p class="job-desc" data-i18n="exp.j4.desc">
+                            Contribute on the development and operation of a cloud native SOC service using Microsoft Sentinel. Development of automations for incident handling and aplication for presenting an overview of all incidents.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">Microsoft Sentinel</span
+                            ><span class="tag">C#</span
+                            ><span class="tag">KQL</span>
+                        </div>
+                    </div>
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j5.title"
+                                >Workplace Engineer</span
+                            >
+                            <span class="job-period">02.2019 — 12.2020</span>
+                        </div>
+                        <div class="job-company">baseVISION AG</div>
+                        <p class="job-desc" data-i18n="exp.j5.desc">
+                            Contribute on diverse Microsoft Client management projects in direct contact with the customers. Development of PowerShell scripts for automating menial tasks. Partial and full projct lead for local and international customers.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">Intune</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">Project Management</span>
+                            <span class="tag">Microsoft Security Solutions</span>
+                        </div>
+                    </div>
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j6.title"
+                                >Junior Workplace Engineer</span
+                            >
+                            <span class="job-period">12.2017 — 01.2019</span>
+                        </div>
+                        <div class="job-company">baseVISION AG</div>
+                        <p class="job-desc" data-i18n="exp.j6.desc">
+                            Development of a migration planning tool using PowerShell and MSSQL for a large scale Windows 10 migration project. Lead Workplace Engineer for Client Engineering and Intune in a client Project. Development of a C# application for communication from the OS system contect to the user context.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">Intune</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">MSSQL</span>
+                            <span class="tag">C#</span>
+                        </div>
+                    </div>
+                    <div class="job fade-in">
+                        <div class="job-meta">
+                            <span class="job-title" data-i18n="exp.j7.title"
+                                >System Engineer</span
+                            >
+                            <span class="job-period">08.2016 — 07.2017</span>
+                        </div>
+                        <div class="job-company">Regio Energie Solothurn</div>
+                        <p class="job-desc" data-i18n="exp.j7.desc">
+                            Emergency delpoyment of a full Datacenter infrastructure for a school environment. Network migration for extending WiFi capabilities in a school. 1st and 2nd level support for schools.
+                        </p>
+                        <div class="job-tags">
+                            <span class="tag">VMWare ESX</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">M365</span>
+                            <span class="tag">Windows Server</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section id="projects">
+                <div class="section-header fade-in">
+                    <span class="section-tag"
+                        >03 // <span data-i18n="proj.tag">Build</span></span
+                    >
+                    <h2 data-i18n="nav.projects">Projects</h2>
+                </div>
+                <div class="projects-grid">
+                    <a
+                        href="https://github.com/yourusername/project1"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬡</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">Sovereign Homelab</div>
+                        <p class="project-desc" data-i18n="proj.p1.desc">
+                            Fully code-driven homelab stack — Proxmox, K3s,
+                            Terraform, Ansible, and ArgoCD for GitOps-based
+                            disaster recovery.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Kubernetes</span
+                            ><span class="tag">Terraform</span
+                            ><span class="tag">Ansible</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="https://github.com/yourusername/project2"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">◈</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">EventStream Engine</div>
+                        <p class="project-desc" data-i18n="proj.p2.desc">
+                            High-throughput event processing pipeline in Go with
+                            Kafka and Redis, capable of 50k events/sec with
+                            replay support.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Go</span
+                            ><span class="tag">Kafka</span
+                            ><span class="tag">Redis</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="https://github.com/yourusername/project3"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬟</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">SecureNet Firewall</div>
+                        <p class="project-desc" data-i18n="proj.p3.desc">
+                            Zone-based UniFi UDM Pro firewall configuration as
+                            code — VLAN isolation, IoT segmentation, VPN access
+                            rules.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">UniFi</span
+                            ><span class="tag">Terraform</span
+                            ><span class="tag">Networking</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="https://github.com/yourusername/project4"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">◇</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">AuthFlow</div>
+                        <p class="project-desc" data-i18n="proj.p4.desc">
+                            Self-hosted SSO with authentik — LDAP, OIDC, SAML,
+                            and MFA integrated across all internal services.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">authentik</span
+                            ><span class="tag">LDAP</span
+                            ><span class="tag">OIDC</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="https://github.com/yourusername/project5"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬡</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">API Gateway CLI</div>
+                        <p class="project-desc" data-i18n="proj.p5.desc">
+                            Developer tool for scaffolding, linting, and
+                            deploying REST APIs with OpenAPI spec validation and
+                            mock generation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span
+                            ><span class="tag">Click</span
+                            ><span class="tag">OpenAPI</span>
+                        </div>
+                    </a>
+
+                    <a
+                        href="https://github.com/yourusername/project6"
+                        target="_blank"
+                        class="project-card fade-in"
+                    >
+                        <div class="project-card-top">
+                            <span class="proj-icon">◈</span
+                            ><span class="proj-link-icon">↗</span>
+                        </div>
+                        <div class="project-name">Obsidian Sync</div>
+                        <p class="project-desc" data-i18n="proj.p6.desc">
+                            Self-hosted end-to-end encrypted note sync service
+                            compatible with Obsidian. Built with Rust and
+                            SQLite.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Rust</span
+                            ><span class="tag">SQLite</span
+                            ><span class="tag">E2EE</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section id="skills">
+                <div class="section-header fade-in">
+                    <span class="section-tag">04 // Stack</span>
+                    <h2 data-i18n="nav.skills">Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g1">
+                            Languages
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Go</span
+                                    ><span class="skill-pct">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".9"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Python</span
+                                    ><span class="skill-pct">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>TypeScript</span
+                                    ><span class="skill-pct">78%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".78"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Rust</span
+                                    ><span class="skill-pct">55%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".55"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g2">
+                            Infrastructure
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Kubernetes</span
+                                    ><span class="skill-pct">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Terraform</span
+                                    ><span class="skill-pct">87%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".87"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Docker</span
+                                    ><span class="skill-pct">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Linux</span
+                                    ><span class="skill-pct">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".9"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g3">
+                            Platforms
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>AWS</span
+                                    ><span class="skill-pct">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".82"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GCP</span
+                                    ><span class="skill-pct">65%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".65"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Proxmox</span
+                                    ><span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GitHub Actions</span
+                                    ><span class="skill-pct">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g4">
+                            Data &amp; Messaging
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>PostgreSQL</span
+                                    ><span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Redis</span
+                                    ><span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".8"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Kafka</span
+                                    ><span class="skill-pct">78%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".78"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GraphQL</span
+                                    ><span class="skill-pct">72%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".72"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPOKEN LANGUAGES -->
+            <section id="languages">
+                <div class="section-header fade-in">
+                    <span class="section-tag"
+                        >05 // <span data-i18n="lang.tag">Speak</span></span
+                    >
+                    <h2 data-i18n="nav.languages">Languages</h2>
+                </div>
+                <div class="lang-grid">
+                    <div class="lang-card fade-in">
+                        <div class="lang-name-text" data-i18n="lang.en.name">
+                            English
+                        </div>
+                        <div
+                            class="lang-level"
+                            style="color: var(--accent)"
+                            data-i18n="lang.native"
+                        >
+                            Native
+                        </div>
+                        <div class="lang-dots">
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                        </div>
+                    </div>
+
+                    <div class="lang-card fade-in">
+                        <div class="lang-name-text">Tamil</div>
+                        <div
+                            class="lang-level"
+                            style="color: var(--accent)"
+                            data-i18n="lang.native"
+                        >
+                            Native
+                        </div>
+                        <div class="lang-dots">
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                        </div>
+                    </div>
+
+                    <div class="lang-card fade-in">
+                        <div class="lang-name-text" data-i18n="lang.de.name">
+                            German
+                        </div>
+                        <div
+                            class="lang-level"
+                            style="color: var(--accent2)"
+                            data-i18n="lang.de.level"
+                        >
+                            Professional (B2)
+                        </div>
+                        <div class="lang-dots">
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+
+                    <div class="lang-card fade-in">
+                        <div class="lang-name-text" data-i18n="lang.fr.name">
+                            French
+                        </div>
+                        <div
+                            class="lang-level"
+                            style="color: var(--muted)"
+                            data-i18n="lang.fr.level"
+                        >
+                            Conversational (A2)
+                        </div>
+                        <div class="lang-dots">
+                            <div class="dot filled"></div>
+                            <div class="dot filled"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p data-i18n="footer.built">
+                Built with vanilla HTML/CSS · Hosted on GitHub Pages
+            </p>
+            <p style="margin-top: 6px">
+                © 2026 <a href="#">Athiraiyan Kugaseelan</a>
+            </p>
+        </footer>
+
+        <script>
+            // ── Translations ───────────────────────────────────────────────
+            const t = {
+                en: {
+                    "nav.about": "About",
+                    "nav.experience": "Experience",
+                    "nav.projects": "Projects",
+                    "nav.skills": "Skills",
+                    "nav.languages": "Languages",
+                    "hero.available": "Available for opportunities",
+                    "hero.role": "Workplace Engineer",
+                    "hero.spec": "Infrastructure & Backend",
+                    "hero.bio":
+                        "I build reliable, scalable systems — from cloud-native backend services to self-hosted homelab infrastructure. Passionate about automation, security, and turning complex architecture into clean, reproducible code.",
+                    "hero.cta": "Get in touch",
+                    "stats.years": "Years experience",
+                    "stats.langs": "Languages spoken",
+                    "stats.uptime": "Homelab uptime (goal)",
+                    "exp.heading": "Experience",
+                    "exp.present": "Present",
+                    "exp.j1.title": "Modern Workplace Engineer",
+                    "exp.j1.desc":
+                        "Engineering and deployment of CI/CD based Intune Policies for Workplaces with CIS hardening. Aiding with CIS assessment and recommendations for mitigations on open points. Design and implementation of M365 DSC to detect configuration drift and notification to a Teams channel. Engineering and implementation of a security baseline for macOS devices.",
+                    "exp.j2.title": "System Engineer",
+                    "exp.j2.desc":
+                        "Introduction of NinjaOne RMM for Windows client management and automation. Preperation and planning for Windows 11 upgrade in a school environment. Development of a Inventory solution in Java with Springboot. Co-Engineer in a Server upgrade project from Windows Server 2016 to Windows Server 2022 with focus on Hyper-V. Implementation of MFA for a secure remote access to the school network.",
+                    "exp.j3.title": "System Engineer",
+                    "exp.j3.desc":
+                        "Client Engineer in a Windows 11 migration project for an emergency services provider with multiple client types. Packaged applications for deploymen with Intune on Windows and macOS devices.",
+                    "exp.j4.title": "SOC Analyst",
+                    "exp.j4.desc":
+                        "Contribute on the development and operation of a cloud native SOC service using Microsoft Sentinel. Development of automations for incident handling and aplication for presenting an overview of all incidents.",
+                    "exp.j5.title": "Workplace Engineer",
+                    "exp.j5.desc":
+                        "Contribute on diverse Microsoft Client management projects in direct contact with the customers. Development of PowerShell scripts for automating menial tasks. Partial and full projct lead for local and international customers.",
+                    "exp.j6.title": "Junior Workplace Engineer",
+                    "exp.j6.desc":
+                        "Development of a migration planning tool using PowerShell and MSSQL for a large scale Windows 10 migration project. Lead Workplace Engineer for Client Engineering and Intune in a client Project. Development of a C# application for communication from the OS system contect to the user context.",
+                    "exp.j7.title": "System Engineer",
+                    "exp.j7.desc":
+                        "Emergency delpoyment of a full Datacenter infrastructure for a school environment. Network migration for extending WiFi capabilities in a school. 1st and 2nd level support for schools.",
+                    "proj.tag": "Build",
+                    "proj.p1.desc":
+                        "Fully code-driven homelab stack — Proxmox, K3s, Terraform, Ansible, and ArgoCD for GitOps-based disaster recovery.",
+                    "proj.p2.desc":
+                        "High-throughput event processing pipeline in Go with Kafka and Redis, capable of 50k events/sec with replay support.",
+                    "proj.p3.desc":
+                        "Zone-based UniFi UDM Pro firewall configuration as code — VLAN isolation, IoT segmentation, VPN access rules.",
+                    "proj.p4.desc":
+                        "Self-hosted SSO with authentik — LDAP, OIDC, SAML, and MFA integrated across all internal services.",
+                    "proj.p5.desc":
+                        "Developer tool for scaffolding, linting, and deploying REST APIs with OpenAPI spec validation and mock generation.",
+                    "proj.p6.desc":
+                        "Self-hosted end-to-end encrypted note sync service compatible with Obsidian. Built with Rust and SQLite.",
+                    "skills.g1": "Languages",
+                    "skills.g2": "Infrastructure",
+                    "skills.g3": "Platforms",
+                    "skills.g4": "Data & Messaging",
+                    "lang.tag": "Speak",
+                    "lang.native": "Native",
+                    "lang.en.name": "English",
+                    "lang.de.name": "German",
+                    "lang.de.level": "Professional (B2)",
+                    "lang.fr.name": "French",
+                    "lang.fr.level": "Conversational (A2)",
+                    "footer.built":
+                        "Built with vanilla HTML/CSS · Hosted on GitHub Pages",
+                },
+                de: {
+                    "nav.about": "Über mich",
+                    "nav.experience": "Erfahrung",
+                    "nav.projects": "Projekte",
+                    "nav.skills": "Kenntnisse",
+                    "nav.languages": "Sprachen",
+                    "hero.available": "Offen für neue Möglichkeiten",
+                    "hero.role": "Workplace Engineer",
+                    "hero.spec": "Infrastruktur & Backend",
+                    "hero.bio":
+                        "Ich entwickle zuverlässige, skalierbare Systeme – von cloud-nativen Backend-Diensten bis hin zu selbst gehosteter Homelab-Infrastruktur. Meine Leidenschaft gilt der Automatisierung, IT-Sicherheit und der Umsetzung komplexer Architekturen in sauberen, reproduzierbaren Code.",
+                    "hero.cta": "Kontakt aufnehmen",
+                    "hero.resume": "Lebenslauf PDF",
+                    "stats.years": "Jahre Erfahrung",
+                    "stats.projects": "Abgeschlossene Projekte",
+                    "stats.langs": "Gesprochene Sprachen",
+                    "stats.uptime": "Homelab-Verfügbarkeit (Ziel)",
+                    "exp.heading": "Berufserfahrung",
+                    "exp.present": "Heute",
+                    "exp.j1.title": "Modern Workplace Engineer",
+                    "exp.j1.desc":
+                        "Entwicklung und Bereitstellung von CI/CD-basierten Intune-Richtlinien für Arbeitsplätze mit CIS-Härtung. Unterstützung bei CIS-Assessments und Empfehlungen zur Behebung offener Punkte. Design und Implementierung von M365 DSC zur Erkennung von Konfigurationsabweichungen und Benachrichtigung in einem Teams-Kanal. Entwicklung und Implementierung einer Sicherheitsbaseline für macOS-Geräte.",
+                    "exp.j2.title": "System Engineer",
+                    "exp.j2.desc":
+                        "Einführung von NinjaOne RMM für Windows-Client-Management und Automatisierung. Vorbereitung und Planung des Windows-11-Upgrades in einem Schulumfeld. Entwicklung einer Inventarlösung in Java mit Spring Boot. Co-Ingenieur in einem Server-Upgrade-Projekt von Windows Server 2016 auf Windows Server 2022 mit Fokus auf Hyper-V. Implementierung von MFA für einen sicheren Fernzugriff auf das Schulnetzwerk.",
+                    "exp.j3.title": "System Engineer",
+                    "exp.j3.desc":
+                        "Client Engineer in einem Windows-11-Migrationsprojekt für einen Einsatzdienstleister mit verschiedenen Client-Typen. Paketierung von Anwendungen für die Bereitstellung mit Intune auf Windows- und macOS-Geräten.",
+                    "exp.j4.title": "SOC Analyst",
+                    "exp.j4.desc":
+                        "Mitarbeit bei der Entwicklung und dem Betrieb eines cloud-nativen SOC-Dienstes mit Microsoft Sentinel. Entwicklung von Automatisierungen für die Vorfallsbearbeitung sowie einer Anwendung zur Übersicht aller Sicherheitsvorfälle.",
+                    "exp.j5.title": "Workplace Engineer",
+                    "exp.j5.desc":
+                        "Mitarbeit an vielfältigen Microsoft-Client-Management-Projekten in direktem Kundenkontakt. Entwicklung von PowerShell-Skripten zur Automatisierung wiederkehrender Aufgaben. Teil- und Gesamtprojektleitung für lokale und internationale Kunden.",
+                    "exp.j6.title": "Junior Workplace Engineer",
+                    "exp.j6.desc":
+                        "Entwicklung eines Migrationsplanungstools mit PowerShell und MSSQL für ein groß angelegtes Windows-10-Migrationsprojekt. Verantwortlicher Workplace Engineer für Client Engineering und Intune in einem Kundenprojekt. Entwicklung einer C#-Anwendung zur Kommunikation vom OS-Systemkontext in den Benutzerkontext.",
+                    "exp.j7.title": "System Engineer",
+                    "exp.j7.desc":
+                        "Notfalleinsatz für den Aufbau einer vollständigen Rechenzentrumsinfrastruktur für ein Schulumfeld. Netzwerkmigration zur Erweiterung der WLAN-Kapazitäten in einer Schule. 1st- und 2nd-Level-Support für Schulen.",
+                    "proj.tag": "Entwicklung",
+                    "proj.p1.desc":
+                        "Vollständig codegesteuerter Homelab-Stack — Proxmox, K3s, Terraform, Ansible und ArgoCD für GitOps-basierte Disaster Recovery.",
+                    "proj.p2.desc":
+                        "Hochdurchsatz-Event-Processing-Pipeline in Go mit Kafka und Redis, fähig zu 50.000 Ereignissen/Sekunde mit Replay-Unterstützung.",
+                    "proj.p3.desc":
+                        "Zonenbasierte UniFi UDM Pro Firewall-Konfiguration als Code — VLAN-Isolierung, IoT-Segmentierung, VPN-Zugriffsregeln.",
+                    "proj.p4.desc":
+                        "Selbst gehostetes SSO mit authentik — LDAP, OIDC, SAML und MFA in allen internen Diensten integriert.",
+                    "proj.p5.desc":
+                        "Entwicklerwerkzeug für das Scaffolding, Linting und Deployment von REST-APIs mit OpenAPI-Spezifikationsvalidierung und Mock-Generierung.",
+                    "proj.p6.desc":
+                        "Selbst gehosteter, Ende-zu-Ende-verschlüsselter Notiz-Sync-Dienst, kompatibel mit Obsidian. Entwickelt mit Rust und SQLite.",
+                    "skills.g1": "Programmiersprachen",
+                    "skills.g2": "Infrastruktur",
+                    "skills.g3": "Plattformen",
+                    "skills.g4": "Daten & Messaging",
+                    "lang.tag": "Sprechen",
+                    "lang.native": "Muttersprache",
+                    "lang.en.name": "Englisch",
+                    "lang.de.name": "Deutsch",
+                    "lang.de.level": "Beruflich (B2)",
+                    "lang.fr.name": "Französisch",
+                    "lang.fr.level": "Grundkenntnisse (A2)",
+                    "footer.built":
+                        "Erstellt mit HTML/CSS · Gehostet auf GitHub Pages",
+                },
+            };
+
+            // ── Apply language ─────────────────────────────────────────────
+            let currentLang = localStorage.getItem("portfolio-lang") || "en";
+
+            function applyLang(lang) {
+                currentLang = lang;
+                localStorage.setItem("portfolio-lang", lang);
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll("[data-i18n]").forEach((el) => {
+                    const key = el.dataset.i18n;
+                    if (t[lang][key] !== undefined)
+                        el.textContent = t[lang][key];
+                });
+
+                document.querySelectorAll(".lang-btn").forEach((btn) => {
+                    btn.classList.toggle("active", btn.dataset.lang === lang);
+                });
+            }
+
+            document.querySelectorAll(".lang-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    if (btn.dataset.lang === currentLang) return;
+                    // Subtle fade
+                    document.body.style.opacity = ".6";
+                    document.body.style.transition = "opacity .12s ease";
+                    setTimeout(() => {
+                        applyLang(btn.dataset.lang);
+                        document.body.style.opacity = "1";
+                    }, 120);
+                });
+            });
+
+            applyLang(currentLang);
+
+            // ── Scroll fade-in ─────────────────────────────────────────────
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e, i) => {
+                        if (e.isIntersecting) {
+                            setTimeout(
+                                () => e.target.classList.add("visible"),
+                                i * 60,
+                            );
+                            observer.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.08 },
+            );
+
+            document
+                .querySelectorAll(".fade-in")
+                .forEach((el) => observer.observe(el));
+
+            // ── Skill bars ─────────────────────────────────────────────────
+            const barObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            e.target
+                                .querySelectorAll(".skill-fill")
+                                .forEach((fill) => {
+                                    fill.style.transform = `scaleX(${fill.dataset.w})`;
+                                });
+                            barObserver.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.3 },
+            );
+
+            document
+                .querySelectorAll("#skills .fade-in")
+                .forEach((el) => barObserver.observe(el));
+        </script>
+    </body>
+</html>
