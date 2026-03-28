@@ -510,6 +510,38 @@
                 transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
             }
 
+            /* ── Soft Skills ── */
+            .soft-skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 16px;
+            }
+            .soft-skill-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                padding: 20px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                transition: border-color 0.2s, transform 0.2s;
+            }
+            .soft-skill-card:hover {
+                border-color: var(--accent2);
+                transform: translateY(-3px);
+            }
+            .soft-skill-title {
+                font-family: var(--sans);
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--bright);
+            }
+            .soft-skill-desc {
+                font-size: 12px;
+                color: var(--muted);
+                line-height: 1.7;
+            }
+
             /* ── Spoken languages ── */
             .lang-grid {
                 display: grid;
@@ -613,6 +645,7 @@
                 <a href="#experience" data-i18n="nav.experience">Experience</a>
                 <a href="#projects" data-i18n="nav.projects">Projects</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#soft-skills" data-i18n="nav.softskills">Soft Skills</a>
                 <a href="#languages" data-i18n="nav.languages">Languages</a>
             </div>
         </nav>
@@ -668,12 +701,6 @@
                     <span class="stat-num">4</span>
                     <span class="stat-label" data-i18n="stats.langs"
                         >Languages spoken</span
-                    >
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num">98.4%</span>
-                    <span class="stat-label" data-i18n="stats.uptime"
-                        >Homelab uptime (goal)</span
                     >
                 </div>
             </div>
@@ -841,15 +868,15 @@
                         <div class="project-card-top">
                             <span class="proj-icon">⬡</span>
                         </div>
-                        <div class="project-name">Homelab Automation</div>
+                        <div class="project-name">M365 Config Drift Detection</div>
                         <p class="project-desc" data-i18n="proj.p1.desc">
-                            Fully code-driven homelab stack — Proxmox, K3s,
-                            Terraform, Ansible. Github CI/CD with private runner is still WIP.
+                            Implemented M365 DSC with GitHub Actions to automatically compare an Azure tenant's live configuration against a CIS-hardened baseline. Any deviation in a protected setting triggers an automated Teams alert, enabling rapid response to unauthorised changes.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Kubernetes</span
-                            ><span class="tag">Terraform</span
-                            ><span class="tag">Ansible</span>
+                            <span class="tag">M365 DSC</span
+                            ><span class="tag">GitHub Actions</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">CIS</span>
                         </div>
                     </div>
 
@@ -857,16 +884,15 @@
                         <div class="project-card-top">
                             <span class="proj-icon">⬟</span>
                         </div>
-                        <div class="project-name">Automated Firewall Management</div>
-                        <p class="project-desc" data-i18n="proj.p3.desc">
-                            Zone-based UniFi UDM Pro firewall configuration as
-                            code — VLAN isolation, IoT segmentation, VPN access
-                            rules all managed using Terraform.
+                        <div class="project-name">Mission-Critical Windows 11 Client</div>
+                        <p class="project-desc" data-i18n="proj.p2.desc">
+                            Co-lead engineer for a Windows 11 client deployed on 24/7 dispatch computers for a mission-critical emergency services provider. Rigorous monthly update testing ensured continuous availability. Also served as lead engineer for a second device type used in field operations, owning the full client lifecycle from engineering to rollout.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">UniFi</span
-                            ><span class="tag">Terraform</span
-                            ><span class="tag">Networking</span>
+                            <span class="tag">Windows 11</span
+                            ><span class="tag">Intune</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">Client Engineering</span>
                         </div>
                     </div>
 
@@ -874,15 +900,95 @@
                         <div class="project-card-top">
                             <span class="proj-icon">◇</span>
                         </div>
-                        <div class="project-name">AuthFlow</div>
-                        <p class="project-desc" data-i18n="proj.p4.desc">
-                            Self-hosted SSO with authentik — LDAP, OIDC, SAML,
-                            and MFA integrated across all internal services.
+                        <div class="project-name">macOS Client Engineering & CI/CD</div>
+                        <p class="project-desc" data-i18n="proj.p3.desc">
+                            Engineered a complete macOS client including Intune policies, compliance configurations, and app deployment. Built a GitHub Actions pipeline for automated delivery of configuration changes. Developed new PowerShell scripts for macOS policy management, mirroring existing Windows scripts for consistent cross-platform tooling.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">authentik</span
-                            ><span class="tag">LDAP</span
-                            ><span class="tag">OIDC</span>
+                            <span class="tag">macOS</span
+                            ><span class="tag">Intune</span
+                            ><span class="tag">GitHub Actions</span
+                            ><span class="tag">PowerShell</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">△</span>
+                        </div>
+                        <div class="project-name">SCCM — Critical Infrastructure</div>
+                        <p class="project-desc" data-i18n="proj.p4.desc">
+                            Lead engineer for the setup and full configuration of SCCM in a critical infrastructure environment. Covered client engineering, creation of a staging task sequence, and end-to-end planning and execution of application deployment.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">SCCM</span
+                            ><span class="tag">Task Sequences</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">Client Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬠</span>
+                        </div>
+                        <div class="project-name">Global SCCM / Intune Co-Management</div>
+                        <p class="project-desc" data-i18n="proj.p5.desc">
+                            Co-engineer in a large-scale project implementing SCCM and Intune co-management for an international organisation with sites distributed across multiple continents, establishing a unified and compliant client management baseline globally.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">SCCM</span
+                            ><span class="tag">Intune</span
+                            ><span class="tag">Co-Management</span
+                            ><span class="tag">Azure AD</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬣</span>
+                        </div>
+                        <div class="project-name">Automated Rollout Planning Tool</div>
+                        <p class="project-desc" data-i18n="proj.p6.desc">
+                            Designed and built a PowerShell/MSSQL application to plan and manage the rollout phase of a large-scale Windows 10 upgrade. The tool automatically determined which applications to stage based on software installed on the legacy device, and gave rollout staff a clear hardware-to-workstation assignment overview.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">PowerShell</span
+                            ><span class="tag">MSSQL</span
+                            ><span class="tag">Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬙</span>
+                        </div>
+                        <div class="project-name">NinjaOne RMM Rollout</div>
+                        <p class="project-desc" data-i18n="proj.p7.desc">
+                            Introduced NinjaOne RMM from scratch into multiple school environments that had no prior client management solution. Configured automated update management, application deployment, and device monitoring for Windows endpoints, bringing previously unmanaged devices under full remote management and automation control.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">NinjaOne</span
+                            ><span class="tag">RMM</span
+                            ><span class="tag">Automation</span
+                            ><span class="tag">Windows</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">◈</span>
+                        </div>
+                        <div class="project-name">Cloud-Native SOC & Automation</div>
+                        <p class="project-desc" data-i18n="proj.p8.desc">
+                            Co-developed a cloud-native SOC service built on Microsoft Sentinel. Authored automated incident handling workflows in KQL and PowerShell to reduce manual triage effort. Built a C# dashboard to visualise open, in-progress, and closed incidents alongside a live cybersecurity news feed. Created an Azure Lighthouse deployment published to the Microsoft Marketplace for streamlined customer onboarding.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Microsoft Sentinel</span
+                            ><span class="tag">KQL</span
+                            ><span class="tag">PowerShell</span
+                            ><span class="tag">Azure Lighthouse</span
+                            ><span class="tag">C#</span>
                         </div>
                     </div>
 
@@ -896,9 +1002,10 @@
                     <h2 data-i18n="nav.skills">Skills</h2>
                 </div>
                 <div class="skills-grid">
+                    <!-- g1: Scripting & Languages -->
                     <div class="fade-in">
                         <div class="skill-group-title" data-i18n="skills.g1">
-                            Languages
+                            Scripting &amp; Languages
                         </div>
                         <div class="skill-list">
                             <div class="skill-item">
@@ -908,6 +1015,15 @@
                                 </div>
                                 <div class="skill-bar">
                                     <div class="skill-fill" data-w=".9"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>KQL</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -931,18 +1047,28 @@
                         </div>
                     </div>
 
+                    <!-- g2: Automation & DevOps -->
                     <div class="fade-in">
                         <div class="skill-group-title" data-i18n="skills.g2">
-                            Infrastructure
+                            Automation &amp; DevOps
                         </div>
                         <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-name">
-                                    <span>Kubernetes</span
-                                    ><span class="skill-pct">70%</span>
+                                    <span>Git</span
+                                    ><span class="skill-pct">90%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" data-w=".7"></div>
+                                    <div class="skill-fill" data-w=".9"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GitHub Actions</span
+                                    ><span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".8"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -965,6 +1091,123 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-name">
+                                    <span>Kubernetes</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- g3: Endpoint Management -->
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g3">
+                            Endpoint Management
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Intune</span
+                                    ><span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".8"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>SCCM</span
+                                    ><span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>M365 DSC</span
+                                    ><span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".8"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- g4: Cloud & Security -->
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g4">
+                            Cloud &amp; Security
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Azure</span
+                                    ><span class="skill-pct">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".9"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Azure AD</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Conditional Access</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Exchange Online</span
+                                    ><span class="skill-pct">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".6"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Microsoft Sentinel</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>SecOps</span
+                                    ><span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" data-w=".7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- g5: Infrastructure & OS -->
+                    <div class="fade-in">
+                        <div class="skill-group-title" data-i18n="skills.g5">
+                            Infrastructure &amp; OS
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <div class="skill-name">
                                     <span>Windows</span
                                     ><span class="skill-pct">95%</span>
                                 </div>
@@ -974,24 +1217,16 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-name">
-                                    <span>Linux</span
-                                    ><span class="skill-pct">90%</span>
+                                    <span>Windows Server</span
+                                    ><span class="skill-pct">85%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" data-w=".9"></div>
+                                    <div class="skill-fill" data-w=".85"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="fade-in">
-                        <div class="skill-group-title" data-i18n="skills.g3">
-                            Platforms
-                        </div>
-                        <div class="skill-list">
                             <div class="skill-item">
                                 <div class="skill-name">
-                                    <span>Azure</span
+                                    <span>Linux</span
                                     ><span class="skill-pct">90%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -1018,11 +1253,11 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-name">
-                                    <span>Intune</span
-                                    ><span class="skill-pct">80%</span>
+                                    <span>Networking</span
+                                    ><span class="skill-pct">85%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" data-w=".8"></div>
+                                    <div class="skill-fill" data-w=".85"></div>
                                 </div>
                             </div>
                         </div>
@@ -1031,11 +1266,59 @@
                 </div>
             </section>
 
+            <!-- SOFT SKILLS -->
+            <section id="soft-skills">
+                <div class="section-header fade-in">
+                    <span class="section-tag"
+                        >05 // <span data-i18n="soft.tag">People</span></span
+                    >
+                    <h2 data-i18n="nav.softskills">Soft Skills</h2>
+                </div>
+                <div class="soft-skills-grid">
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s1.title">Project Leadership</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s1.desc">Served as sole lead engineer across multiple projects, taking full ownership from initial planning through to final delivery.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s2.title">Initiative</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s2.desc">Consistently built tooling and automation beyond the core brief, proactively identifying opportunities to improve processes without being asked.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s3.title">Collaboration</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s3.desc">Experienced working as co-engineer alongside peers and cross-functional teams on large-scale international projects.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s4.title">Customer Communication</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s4.desc">Comfortable working directly with customers on complex technical engagements, both locally and across international projects.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s5.title">Structured Thinking</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s5.desc">Approaches complex problems methodically — breaking down large migrations and deployments into clear, manageable phases.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s6.title">Attention to Detail</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s6.desc">Proven ability to deliver reliably in high-stakes environments where errors carry significant real-world consequences.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s7.title">Adaptability</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s7.desc">Experienced across highly varied environments: schools, emergency services, critical infrastructure, and international enterprises.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s8.title">Multilingual Communication</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s8.desc">Communicates fluently in German, English, and French (B2), enabling effective collaboration across language barriers.</p>
+                    </div>
+                    <div class="soft-skill-card fade-in">
+                        <div class="soft-skill-title" data-i18n="soft.s9.title">Patience &amp; Persistence</div>
+                        <p class="soft-skill-desc" data-i18n="soft.s9.desc">Works through difficult technical problems and challenging customer situations step by step, calmly and methodically, until fully resolved — regardless of how long it takes.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- SPOKEN LANGUAGES -->
             <section id="languages">
                 <div class="section-header fade-in">
                     <span class="section-tag"
-                        >05 // <span data-i18n="lang.tag">Speak</span></span
+                        >06 // <span data-i18n="lang.tag">Speak</span></span
                     >
                     <h2 data-i18n="nav.languages">Languages</h2>
                 </div>
@@ -1138,7 +1421,27 @@
                     "nav.experience": "Experience",
                     "nav.projects": "Projects",
                     "nav.skills": "Skills",
+                    "nav.softskills": "Soft Skills",
                     "nav.languages": "Languages",
+                    "soft.tag": "People",
+                    "soft.s1.title": "Project Leadership",
+                    "soft.s1.desc": "Served as sole lead engineer across multiple projects, taking full ownership from initial planning through to final delivery.",
+                    "soft.s2.title": "Initiative",
+                    "soft.s2.desc": "Consistently built tooling and automation beyond the core brief, proactively identifying opportunities to improve processes without being asked.",
+                    "soft.s3.title": "Collaboration",
+                    "soft.s3.desc": "Experienced working as co-engineer alongside peers and cross-functional teams on large-scale international projects.",
+                    "soft.s4.title": "Customer Communication",
+                    "soft.s4.desc": "Comfortable working directly with customers on complex technical engagements, both locally and across international projects.",
+                    "soft.s5.title": "Structured Thinking",
+                    "soft.s5.desc": "Approaches complex problems methodically — breaking down large migrations and deployments into clear, manageable phases.",
+                    "soft.s6.title": "Attention to Detail",
+                    "soft.s6.desc": "Proven ability to deliver reliably in high-stakes environments where errors carry significant real-world consequences.",
+                    "soft.s7.title": "Adaptability",
+                    "soft.s7.desc": "Experienced across highly varied environments: schools, emergency services, critical infrastructure, and international enterprises.",
+                    "soft.s8.title": "Multilingual Communication",
+                    "soft.s8.desc": "Communicates fluently in German, English, and French (B2), enabling effective collaboration across language barriers.",
+                    "soft.s9.title": "Patience & Persistence",
+                    "soft.s9.desc": "Works through difficult technical problems and challenging customer situations step by step, calmly and methodically, until fully resolved — regardless of how long it takes.",
                     "hero.available": "Available for opportunities",
                     "hero.role": "Workplace Engineer",
                     "hero.spec": "Infrastructure & Backend",
@@ -1173,15 +1476,26 @@
                         "Emergency delpoyment of a full Datacenter infrastructure for a school environment. Network migration for extending WiFi capabilities in a school. 1st and 2nd level support for schools.",
                     "proj.tag": "Build",
                     "proj.p1.desc":
-                        "Fully code-driven homelab stack — Proxmox, K3s, Terraform, Ansible. Github CI/CD with private runner is still WIP.",
+                        "Implemented M365 DSC with GitHub Actions to automatically compare an Azure tenant's live configuration against a CIS-hardened baseline. Any deviation in a protected setting triggers an automated Teams alert, enabling rapid response to unauthorised changes.",
+                    "proj.p2.desc":
+                        "Co-lead engineer for a Windows 11 client deployed on 24/7 dispatch computers for a mission-critical emergency services provider. Rigorous monthly update testing ensured continuous availability. Also served as lead engineer for a second device type used in field operations, owning the full client lifecycle from engineering to rollout.",
                     "proj.p3.desc":
-                        "Zone-based UniFi UDM Pro firewall configuration as code — VLAN isolation, IoT segmentation, VPN access rules all managed using Terraform.",
+                        "Engineered a complete macOS client including Intune policies, compliance configurations, and app deployment. Built a GitHub Actions pipeline for automated delivery of configuration changes. Developed new PowerShell scripts for macOS policy management, mirroring existing Windows scripts for consistent cross-platform tooling.",
                     "proj.p4.desc":
-                        "Self-hosted SSO with authentik — LDAP, OIDC, SAML, and MFA integrated across all internal services.",
-                    "skills.g1": "Languages",
-                    "skills.g2": "Infrastructure",
-                    "skills.g3": "Platforms",
-                    "skills.g4": "Data & Messaging",
+                        "Lead engineer for the setup and full configuration of SCCM in a critical infrastructure environment. Covered client engineering, creation of a staging task sequence, and end-to-end planning and execution of application deployment.",
+                    "proj.p5.desc":
+                        "Co-engineer in a large-scale project implementing SCCM and Intune co-management for an international organisation with sites distributed across multiple continents, establishing a unified and compliant client management baseline globally.",
+                    "proj.p6.desc":
+                        "Designed and built a PowerShell/MSSQL application to plan and manage the rollout phase of a large-scale Windows 10 upgrade. The tool automatically determined which applications to stage based on software installed on the legacy device, and gave rollout staff a clear hardware-to-workstation assignment overview.",
+                    "proj.p7.desc":
+                        "Introduced NinjaOne RMM from scratch into multiple school environments that had no prior client management solution. Configured automated update management, application deployment, and device monitoring for Windows endpoints, bringing previously unmanaged devices under full remote management and automation control.",
+                    "proj.p8.desc":
+                        "Co-developed a cloud-native SOC service built on Microsoft Sentinel. Authored automated incident handling workflows in KQL and PowerShell to reduce manual triage effort. Built a C# dashboard to visualise open, in-progress, and closed incidents alongside a live cybersecurity news feed. Created an Azure Lighthouse deployment published to the Microsoft Marketplace for streamlined customer onboarding.",
+                    "skills.g1": "Scripting & Languages",
+                    "skills.g2": "Automation & DevOps",
+                    "skills.g3": "Endpoint Management",
+                    "skills.g4": "Cloud & Security",
+                    "skills.g5": "Infrastructure & OS",
                     "lang.tag": "Speak",
                     "lang.native": "Native",
                     "lang.en.name": "English",
@@ -1196,7 +1510,27 @@
                     "nav.experience": "Erfahrung",
                     "nav.projects": "Projekte",
                     "nav.skills": "Kenntnisse",
+                    "nav.softskills": "Soft Skills",
                     "nav.languages": "Sprachen",
+                    "soft.tag": "Persönlich",
+                    "soft.s1.title": "Projektleitung",
+                    "soft.s1.desc": "War in mehreren Projekten alleiniger Lead Engineer und übernahm die volle Verantwortung von der Planung bis zur finalen Umsetzung.",
+                    "soft.s2.title": "Eigeninitiative",
+                    "soft.s2.desc": "Entwickelte regelmässig Werkzeuge und Automatisierungen über den Kernauftrag hinaus und erkannte proaktiv Verbesserungspotenziale, ohne dazu aufgefordert zu werden.",
+                    "soft.s3.title": "Zusammenarbeit",
+                    "soft.s3.desc": "Erfahrung als Co-Engineer in bereichsübergreifenden Teams bei groß angelegten internationalen Projekten.",
+                    "soft.s4.title": "Kundenkommunikation",
+                    "soft.s4.desc": "Sicher im direkten Kundenkontakt bei komplexen technischen Projekten, sowohl lokal als auch international.",
+                    "soft.s5.title": "Strukturiertes Denken",
+                    "soft.s5.desc": "Geht komplexe Probleme methodisch an — unterteilt grosse Migrationen und Deployments in klare, handhabbare Phasen.",
+                    "soft.s6.title": "Sorgfalt",
+                    "soft.s6.desc": "Nachgewiesene Zuverlässigkeit in kritischen Umgebungen, in denen Fehler erhebliche reale Konsequenzen haben.",
+                    "soft.s7.title": "Anpassungsfähigkeit",
+                    "soft.s7.desc": "Erfahrung in sehr unterschiedlichen Umgebungen: Schulen, Einsatzdienste, kritische Infrastruktur und internationale Unternehmen.",
+                    "soft.s8.title": "Mehrsprachige Kommunikation",
+                    "soft.s8.desc": "Kommuniziert fließend auf Deutsch, Englisch und Französisch (B2) und ermöglicht so effektive Zusammenarbeit über Sprachgrenzen hinaus.",
+                    "soft.s9.title": "Geduld & Ausdauer",
+                    "soft.s9.desc": "Arbeitet schwierige technische Probleme und herausfordernde Kundensituationen Schritt für Schritt durch — ruhig und methodisch, bis zur vollständigen Lösung, egal wie lange es dauert.",
                     "hero.available": "Offen für neue Möglichkeiten",
                     "hero.role": "Workplace Engineer",
                     "hero.spec": "Infrastruktur & Backend",
@@ -1231,17 +1565,28 @@
                     "exp.j7.title": "System Engineer",
                     "exp.j7.desc":
                         "Notfalleinsatz für den Aufbau einer vollständigen Rechenzentrumsinfrastruktur für ein Schulumfeld. Netzwerkmigration zur Erweiterung der WLAN-Kapazitäten in einer Schule. 1st- und 2nd-Level-Support für Schulen.",
-                    "proj.tag": "Entwicklung",
+                    "proj.tag": "Projekte",
                     "proj.p1.desc":
-                        "Vollständig codegesteuerter Homelab-Stack — Proxmox, K3s, Terraform, Ansible. GitHub CI/CD mit privatem Runner ist noch in Arbeit.",
+                        "Implementierung von M365 DSC mit GitHub Actions zum automatischen Abgleich der Live-Konfiguration eines Azure-Tenants mit einer CIS-gehärteten Baseline. Jede Abweichung in einer geschützten Einstellung löst eine automatische Teams-Benachrichtigung aus und ermöglicht eine schnelle Reaktion auf unautorisierte Änderungen.",
+                    "proj.p2.desc":
+                        "Co-Lead Engineer für einen Windows-11-Client auf Hochverfügbarkeits-Dispatch-Computern eines kritischen Einsatzdienstleisters mit 24/7-Betriebspflicht. Strenge monatliche Update-Tests sicherten die kontinuierliche Verfügbarkeit. Zusätzlich als Lead Engineer für einen zweiten Gerätetyp im Feldeinsatz verantwortlich – zuständig für den gesamten Client-Lebenszyklus von der Entwicklung bis zum Rollout.",
                     "proj.p3.desc":
-                        "Zonenbasierte UniFi UDM Pro Firewall-Konfiguration als Code — VLAN-Isolierung, IoT-Segmentierung, VPN-Zugriffsregeln, alles verwaltet mit Terraform.",
+                        "Entwicklung eines vollständigen macOS-Clients mit Intune-Richtlinien, Compliance-Konfigurationen und App-Deployment. Aufbau einer GitHub-Actions-Pipeline für die automatisierte Bereitstellung von Konfigurationsänderungen. Erstellung neuer PowerShell-Skripte für macOS-Richtlinien analog zu bestehenden Windows-Skripten für konsistentes plattformübergreifendes Tooling.",
                     "proj.p4.desc":
-                        "Selbst gehostetes SSO mit authentik — LDAP, OIDC, SAML und MFA in allen internen Diensten integriert.",
-                    "skills.g1": "Programmiersprachen",
-                    "skills.g2": "Infrastruktur",
-                    "skills.g3": "Plattformen",
-                    "skills.g4": "Daten & Messaging",
+                        "Lead Engineer für Einrichtung und vollständige Konfiguration von SCCM in einem kritischen Infrastrukturumfeld. Zuständig für Client Engineering, Erstellung einer Staging-Task-Sequenz sowie End-to-End-Planung und Durchführung des Anwendungs-Deployments.",
+                    "proj.p5.desc":
+                        "Co-Engineer in einem groß angelegten Projekt zur Einführung von SCCM- und Intune-Co-Management für eine internationale Organisation mit Standorten auf mehreren Kontinenten, zur Schaffung einer einheitlichen und konformen Client-Management-Baseline weltweit.",
+                    "proj.p6.desc":
+                        "Entwicklung einer PowerShell/MSSQL-Anwendung zur Planung und Steuerung der Rollout-Phase eines groß angelegten Windows-10-Upgrade-Projekts. Das Tool ermittelte automatisch, welche Anwendungen basierend auf der installierten Software des Altgeräts bereitzustellen waren, und bot dem Rollout-Personal eine übersichtliche Hardware-Zuweisung pro Arbeitsplatz.",
+                    "proj.p7.desc":
+                        "Einführung von NinjaOne RMM aus dem Stand in mehrere Schulumgebungen ohne vorherige Client-Management-Lösung. Konfiguration von automatischem Update-Management, Anwendungs-Deployment und Geräte-Monitoring für Windows-Endpunkte – bisher unverwaltete Geräte wurden vollständig in die Fernverwaltung und Automatisierung überführt.",
+                    "proj.p8.desc":
+                        "Mitentwicklung eines cloud-nativen SOC-Diensts auf Basis von Microsoft Sentinel. Erstellung automatisierter Incident-Handling-Workflows in KQL und PowerShell zur Reduktion manueller Triage-Arbeit. Entwicklung eines C#-Dashboards zur Visualisierung offener, laufender und geschlossener Vorfälle mit Live-Cybersecurity-Newsfeed. Erstellung eines Azure-Lighthouse-Deployments im Microsoft Marketplace für vereinfachtes Kunden-Onboarding.",
+                    "skills.g1": "Scripting & Sprachen",
+                    "skills.g2": "Automatisierung & DevOps",
+                    "skills.g3": "Endpoint Management",
+                    "skills.g4": "Cloud & Security",
+                    "skills.g5": "Infrastruktur & Betriebssysteme",
                     "lang.tag": "Sprechen",
                     "lang.native": "Muttersprache",
                     "lang.en.name": "Englisch",
