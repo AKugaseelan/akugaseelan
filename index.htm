@@ -458,6 +458,15 @@
                 flex-wrap: wrap;
                 margin-top: 4px;
             }
+            .proj-subheading {
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--accent2);
+                margin: 36px 0 18px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--border);
+            }
 
             /* ── Skills ── */
             .skills-grid {
@@ -993,6 +1002,57 @@
                     </div>
 
                 </div>
+
+                <!-- Homelab subsection -->
+                <div class="proj-subheading fade-in" data-i18n="proj.homelab.heading">Homelab</div>
+                <div class="projects-grid">
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬡</span>
+                        </div>
+                        <div class="project-name">Homelab Automation</div>
+                        <p class="project-desc" data-i18n="proj.h1.desc">
+                            Fully code-driven homelab stack — Proxmox, K3s, Terraform, Ansible. GitHub CI/CD with private runner is still WIP.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Kubernetes</span
+                            ><span class="tag">Terraform</span
+                            ><span class="tag">Ansible</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">⬟</span>
+                        </div>
+                        <div class="project-name">Automated Firewall Management</div>
+                        <p class="project-desc" data-i18n="proj.h2.desc">
+                            Zone-based UniFi UDM Pro firewall configuration as code — VLAN isolation, IoT segmentation, VPN access rules all managed using Terraform.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">UniFi</span
+                            ><span class="tag">Terraform</span
+                            ><span class="tag">Networking</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-card-top">
+                            <span class="proj-icon">◇</span>
+                        </div>
+                        <div class="project-name">AuthFlow</div>
+                        <p class="project-desc" data-i18n="proj.h3.desc">
+                            Self-hosted SSO with authentik — LDAP, OIDC, SAML, and MFA integrated across all internal services.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">authentik</span
+                            ><span class="tag">LDAP</span
+                            ><span class="tag">OIDC</span>
+                        </div>
+                    </div>
+
+                </div>
             </section>
 
             <!-- SKILLS -->
@@ -1491,6 +1551,13 @@
                         "Introduced NinjaOne RMM from scratch into multiple school environments that had no prior client management solution. Configured automated update management, application deployment, and device monitoring for Windows endpoints, bringing previously unmanaged devices under full remote management and automation control.",
                     "proj.p8.desc":
                         "Co-developed a cloud-native SOC service built on Microsoft Sentinel. Authored automated incident handling workflows in KQL and PowerShell to reduce manual triage effort. Built a C# dashboard to visualise open, in-progress, and closed incidents alongside a live cybersecurity news feed. Created an Azure Lighthouse deployment published to the Microsoft Marketplace for streamlined customer onboarding.",
+                    "proj.homelab.heading": "Homelab",
+                    "proj.h1.desc":
+                        "Fully code-driven homelab stack — Proxmox, K3s, Terraform, Ansible. GitHub CI/CD with private runner is still WIP.",
+                    "proj.h2.desc":
+                        "Zone-based UniFi UDM Pro firewall configuration as code — VLAN isolation, IoT segmentation, VPN access rules all managed using Terraform.",
+                    "proj.h3.desc":
+                        "Self-hosted SSO with authentik — LDAP, OIDC, SAML, and MFA integrated across all internal services.",
                     "skills.g1": "Scripting & Languages",
                     "skills.g2": "Automation & DevOps",
                     "skills.g3": "Endpoint Management",
@@ -1582,6 +1649,13 @@
                         "Einführung von NinjaOne RMM aus dem Stand in mehrere Schulumgebungen ohne vorherige Client-Management-Lösung. Konfiguration von automatischem Update-Management, Anwendungs-Deployment und Geräte-Monitoring für Windows-Endpunkte – bisher unverwaltete Geräte wurden vollständig in die Fernverwaltung und Automatisierung überführt.",
                     "proj.p8.desc":
                         "Mitentwicklung eines cloud-nativen SOC-Diensts auf Basis von Microsoft Sentinel. Erstellung automatisierter Incident-Handling-Workflows in KQL und PowerShell zur Reduktion manueller Triage-Arbeit. Entwicklung eines C#-Dashboards zur Visualisierung offener, laufender und geschlossener Vorfälle mit Live-Cybersecurity-Newsfeed. Erstellung eines Azure-Lighthouse-Deployments im Microsoft Marketplace für vereinfachtes Kunden-Onboarding.",
+                    "proj.homelab.heading": "Homelab",
+                    "proj.h1.desc":
+                        "Vollständig codegesteuerter Homelab-Stack — Proxmox, K3s, Terraform, Ansible. GitHub CI/CD mit privatem Runner ist noch in Arbeit.",
+                    "proj.h2.desc":
+                        "Zonenbasierte UniFi UDM Pro Firewall-Konfiguration als Code — VLAN-Isolierung, IoT-Segmentierung, VPN-Zugriffsregeln, alles verwaltet mit Terraform.",
+                    "proj.h3.desc":
+                        "Selbst gehostetes SSO mit authentik — LDAP, OIDC, SAML und MFA in allen internen Diensten integriert.",
                     "skills.g1": "Scripting & Sprachen",
                     "skills.g2": "Automatisierung & DevOps",
                     "skills.g3": "Endpoint Management",
